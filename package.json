@@ -1,14 +1,17 @@
 {
-	"name": "node-image-upload-cloudinary",
-	"version": "1.0.0",
-	"description": "nodeJs image upload system using multer sharp and cloudinary",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server.js"
-	},
-	"author": "Harun Or Rashid",
-	"license": "ISC",
-	"dependencies": {
-		"express": "^4.17.1"
-	}
+  "name": "node-image-upload-cloudinary",
+  "version": "1.0.0",
+  "description": "nodeJs image upload system using multer sharp and cloudinary",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Harun Or Rashid",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
