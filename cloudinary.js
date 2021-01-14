@@ -9,7 +9,7 @@ cloudinary.config({
 });
 
 // Upload image to the cloudinary cloud
-const uploadImageInCloud = (buffer, folder) => {
+exports.uploadImageInCloud = (buffer, folder) => {
   return new Promise((resolve, reject) => {
     const cloudinaryUploadStream = cloudinary.uploader.upload_stream(
       {

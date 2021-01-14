@@ -8,7 +8,7 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
   } else {
-    cb({ message: 'Not an image! Please upload an image' }, false);
+    cb('Not an image! Please upload an image', false);
   }
 };
 
@@ -38,6 +38,4 @@ exports.resizeUploadedImage = async (req, res, next) => {
       message: 'Image upload failed! Please try again',
     });
   }
-
-  next();
 };
