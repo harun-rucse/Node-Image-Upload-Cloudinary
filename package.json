@@ -4,7 +4,7 @@
   "description": "nodeJs image upload system using multer sharp and cloudinary",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Harun Or Rashid",
   "license": "ISC",
