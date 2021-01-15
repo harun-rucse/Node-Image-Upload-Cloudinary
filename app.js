@@ -18,7 +18,7 @@ app.post(
 
       res.status(200).json({
         status: 'success',
-        url: result.url,
+        data: result,
       });
     } catch (err) {
       res.status(400).json({
