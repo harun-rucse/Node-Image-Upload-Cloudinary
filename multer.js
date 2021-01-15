@@ -18,6 +18,7 @@ const upload = multer({
 });
 
 exports.uploadSingleImage = upload.single('photo');
+exports.uploadMultipleImage = upload.array('photos');
 
 exports.resizeUploadedImage = async (req, res, next) => {
   try {
@@ -30,6 +31,31 @@ exports.resizeUploadedImage = async (req, res, next) => {
       .toBuffer();
 
     req.file.buffer = fileBuffer;
+
+    next();
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: 'Image upload failed! Please try again',
+    });
+  }
+};
+
+exports.resizeMultipleImage = async (req, res, next) => {
+  try {
+    if (!req.files) return next();
+
+    const fileBuffers = await Promise.all(
+      req.files.map(async (file) => {
+        return await sharp(file.buffer)
+          .resize(200, 200)
+          .toFormat('jpeg')
+          .jpeg({ quality: 90 })
+          .toBuffer();
+      })
+    );
+
+    req.files.buffer = fileBuffers;
 
     next();
   } catch (err) {
