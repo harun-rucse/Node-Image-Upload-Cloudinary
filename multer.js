@@ -24,13 +24,11 @@ exports.resizeUploadedImage = async (req, res, next) => {
   try {
     if (!req.file) return next();
 
-    const fileBuffer = await sharp(req.file.buffer)
+    req.file.buffer = await sharp(req.file.buffer)
       .resize(200, 200)
       .toFormat('jpeg')
       .jpeg({ quality: 90 })
       .toBuffer();
-
-    req.file.buffer = fileBuffer;
 
     next();
   } catch (err) {
@@ -45,7 +43,7 @@ exports.resizeMultipleImage = async (req, res, next) => {
   try {
     if (!req.files) return next();
 
-    const fileBuffers = await Promise.all(
+    req.files.buffer = await Promise.all(
       req.files.map(async (file) => {
         return await sharp(file.buffer)
           .resize(200, 200)
@@ -54,8 +52,6 @@ exports.resizeMultipleImage = async (req, res, next) => {
           .toBuffer();
       })
     );
-
-    req.files.buffer = fileBuffers;
 
     next();
   } catch (err) {
