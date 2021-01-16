@@ -30,6 +30,15 @@ Run server
 npm run start
 ```
 
-Look at site
+Testing API using Postman
 
-- Navigate to [http://localhost:5000](http://localhost:5000/)
+```
+POST localhost:5000/upload-single-image
+Body -> form-data then, key: photo value: select image
+```
+
+```
+POST localhost:5000/upload-multiple-image
+Body -> form-data then, key: photo value: select image
+                        key: photo value: select another image
+```
